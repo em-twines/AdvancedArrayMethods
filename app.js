@@ -143,26 +143,103 @@ function problemOne(){
 
     let results;
 
+    results = dishes.filter(function(el){
+        if (el.cuisine == "Vegetarian"){
+            console.log(el);
+            return true;
+        }
+        else{
+            return false; 
+        }
+    })
     return results;
 }
+let vegetarianFood = problemOne();
+console.log('problem 1:', vegetarianFood);
 
 //2. Create a function that will prompt the user to enter a cuisine type and then return all dishes that match that type
 //Filter
 
+function problemTwo(){
+    let results;
+    input = prompt("Please enter a type of cuisine to see options matching that type (Vegetarian, Mexican, Hungarian, Vietnamese, Irish, French, or Italian)")
 
+    results = dishes.filter(function(el){
+        if (el.cuisine == input){
+            console.log(el);
+            return true;
+        }
+        else{
+            return false;
+        }
+    })
+    return results;
+
+}
+
+let chosenCuisine = problemTwo();
+console.log('problem 2:', chosenCuisine);
 
 //3. Create a function that will return all dishes with the cuisine type of "Italian" and a serving size greater than 5.
 //Filter
 
+function problemThree(){    
+    let results;
+    results = dishes.filter(function(el){
+        if (el.cuisine == 'Italian' && el.servings > 5){
+            console.log(el);
+            return true;
+        }
+        else{
+            return false;
+        }
+    })
+    return results;
+
+}
+let italianCuisine = problemThree();
+console.log('problem 3:', italianCuisine);
 
 
 //4. Create a function that will return only dishes whose id number matches their serving count.
 //Filter
 
+function problemFour(){
+   let results; 
+    results = dishes.filter(function(el){
+        if (el.id == el.servings){
+            console.log(el);
+            return true;
+        }
+        else{
+            return false; 
+        }
+    })
+    return results;
+}
 
+let idServings = problemFour();
+console.log('problem 4:', idServings)
 
 //5. Create a function that will return only dishes whose serving count is even.
 //Filter
+
+function problemFive(){
+    let results; 
+    results = dishes.filter(function(el){
+        if (el.servings % 2 == 0){
+            console.log(el);
+            return true;
+        }
+        else{
+            return false; 
+        }
+    })
+    return results; 
+}
+
+let evenServings = problemFive();
+console.log("problem 5", evenServings);
 
 
 
@@ -171,36 +248,139 @@ function problemOne(){
 //Double Hint: Research 'javascript does array include item'
 //Filter
 
+function problemSix(){
+    let results;
+    results = dishes.filter(function(el){
+        if (el.ingredients.includes('chickpea')){
+            console.log(el);
+            return true; 
+        }
+        else{
+            return false; 
+        }
+    })
+    return results;
+}
+
+let ingredientChickpea = problemSix();
+console.log('problem 6:', ingredientChickpea);
 
 
 //7. Create a function that will prompt the user to type the name of one ingredient. Then use a filter to find all the dishes whose ingredients array INCLUDES that ingredient. Return the new array.
 //Filter
 
+function problemSeven(){
+    let results; 
+    input = prompt('Please enter the name of an ingredient.')
+    results = dishes.filter(function(el){
+        if (el.ingredients.includes(input)){
+            console.log(el);
+            return true; 
+        }    
+        else{
+            return false; 
+        }
+    })
+    return results;
+}
 
+let ingredientInput = problemSeven();
+console.log("problem 7:", ingredientInput);
 
 //8a. Create a function that will return an array of the string cuisine types. Ie, ["Italian", "Italian", "Mexican", ...]
 //Map
 
+function problemEight(){
+    let results; 
+    results = dishes.map(function(el){
+        return el.cuisine;
+    })
+    return results; 
+}
 
+let cuisineTypes = problemEight();
+console.log('problem 8', cuisineTypes);
 
 //9. Create a function that will return an array of strings, with the cuisine type appended to the start of the dish's name. Ie, ["Italian Pizza", "Italian Spaghetti", ...]
 //Map 
 
+function problemNine(){
+    let results; 
+    results = dishes.map(function(el){
+        outputCuisine = el.cuisine;
+        outputName = el.name;
+        return outputCuisine + " " + outputName;
 
+    })
+    return results; 
+}
+
+let cuisineName = problemNine();
+console.log('problem 9:', cuisineName);
 
 //10. Create a function that will use advanced array methods on the 'dishes' array and return the result ["Vegetarian Lasagna", "Vegetarian Falafel", "Vegetarian Chili"]
 
+function problemTen(){
+    let results; 
+    results = dishes.filter(function(el){
+        if (el.cuisine == "Vegetarian"){
+            return true;
+        }
+        else{
+            return false; 
+        }
+    })
+    let filterVeg; 
+    filterVeg = results.map(function(el){
+        outputCuisine = el.cuisine;
+        outputName = el.name;
+        return outputCuisine + " " + outputName;
 
+    })
+    return filterVeg;
+
+}
+
+let filteredVeg = problemTen();
+console.log('problem 10:', filteredVeg);
 
 
 
 //BONUS
 
-//8b. Use the filter method to eliminate duplicate from problem 8a.
+//8b. Use the filter method to eliminate duplicates from problem 8a.
+
+
+function problemEight(){
+    let results; 
+    results = dishes.map(function(el){
+        return el.cuisine;
+    })
+    let toReturn = []; 
+    toReturn = results.filter(function(el){
+        if (toReturn.includes(el)){
+            return false; 
+        }
+        else{
+            return toReturn.push(el);        
+        }
+    })
+    return toReturn;
+
+    
+}
+
+let cuisineTypesb = problemEight();
+console.log('problem 8b', cuisineTypesb);
+
+
 
 //11. Create a function that will return dishes whose ingredients array INCLUDES "tomato" OR "cheese".
 //Hint: You do not want to check the array's indexes to find out what the array INCLUDES.
 //Filter
+
+
+
 
 //12. Create a function that will return the total serving count of all dishes.
 //Must use Reduce, not a loop.
